@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.konspect"
+    namespace = "com.example.conspect"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.konspect"
+        applicationId = "com.example.conspect"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")

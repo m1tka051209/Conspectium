@@ -1,4 +1,4 @@
-package com.example.konspect;
+package com.example.conspect;
 
 import org.junit.Test;
 

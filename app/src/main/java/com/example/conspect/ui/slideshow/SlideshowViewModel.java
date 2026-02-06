@@ -1,4 +1,4 @@
-package com.example.konspect.ui.slideshow;
+package com.example.conspect.ui.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

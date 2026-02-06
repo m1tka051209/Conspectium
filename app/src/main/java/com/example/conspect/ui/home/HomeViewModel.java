@@ -1,12 +1,12 @@
-package com.example.konspect.ui.home;
+package com.example.conspect.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.konspect.models.Conspect;
-import com.example.konspect.network.ApiService;
-import com.example.konspect.network.RetrofitClient;
+import com.example.conspect.models.Conspect;
+import com.example.conspect.network.ApiService;
+import com.example.conspect.network.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,36 +33,51 @@ public class HomeViewModel extends ViewModel {
 
         new android.os.Handler().postDelayed(() -> {
             List<Conspect> testData = new ArrayList<>();
-
-            Conspect c1 = new Conspect();
-            c1.setId(1L);
-            c1.setTitle("Квадратные уравнения");
-            c1.setContent("Формула дискриминанта: D = b² - 4ac. Корни уравнения находятся по формуле: x = (-b ± √D) / 2a");
-            c1.setSubject("Математика");
-            c1.setCreatedAt("2024-02-15 10:30");
-
-
-            Conspect c2 = new Conspect();
-            c2.setId(2L);
-            c2.setTitle("Фотосинтез");
-            c2.setContent("Процесс преобразования световой энергии в химическую энергию органических соединений");
-            c2.setSubject("Биология");
-            c2.setCreatedAt("2024-02-14 14:20");
-
-            Conspect c3 = new Conspect();
-            c3.setId(3L);
-            c3.setTitle("Вторая мировая война");
-            c3.setContent("1939-1945, основные события: нападение на Польшу, Сталинградская битва, открытие второго фронта");
-            c3.setSubject("История");
-            c3.setCreatedAt("2024-02-13 16:45");
-
-            testData.add(c1);
-            testData.add(c2);
-            testData.add(c3);
-
+//
+//            Conspect c1 = new Conspect();
+//            c1.setId(1L);
+//            c1.setTitle("Квадратные уравнения");
+//            c1.setContent("Формула дискриминанта: D = b² - 4ac. Корни уравнения находятся по формуле: x = (-b ± √D) / 2a");
+//            c1.setSubject("Математика");
+//            c1.setCreatedAt("2024-02-15 10:30");
+//
+//
+//            Conspect c2 = new Conspect();
+//            c2.setId(2L);
+//            c2.setTitle("Фотосинтез");
+//            c2.setContent("Процесс преобразования световой энергии в химическую энергию органических соединений");
+//            c2.setSubject("Биология");
+//            c2.setCreatedAt("2024-02-14 14:20");
+//
+//            Conspect c3 = new Conspect();
+//            c3.setId(3L);
+//            c3.setTitle("Вторая мировая война");
+//            c3.setContent("1939-1945, основные события: нападение на Польшу, Сталинградская битва, открытие второго фронта");
+//            c3.setSubject("История");
+//            c3.setCreatedAt("2024-02-13 16:45");
+//
+//            testData.add(c1);
+//            testData.add(c2);
+//            testData.add(c3);
+//
             conspectLiveData.setValue(testData);
             isLoadingLiveData.setValue(false);
         }, 2000);
+
+
+//
+    }
+
+    public void refresh() {
+        isLoadingLiveData.setValue(true);
+
+        new android.os.Handler().postDelayed(() -> {
+            List<Conspect> currentData = conspectLiveData.getValue();
+            if (currentData != null) {
+                conspectLiveData.setValue(currentData);
+            }
+            isLoadingLiveData.setValue(false);
+        }, 1000);
     }
 
     public void loadConpects() {
@@ -98,9 +113,5 @@ public class HomeViewModel extends ViewModel {
 
     public LiveData<String> getError() {
         return errorLiveData;
-    }
-
-    public void refresh() {
-        loadConpects();
     }
 }

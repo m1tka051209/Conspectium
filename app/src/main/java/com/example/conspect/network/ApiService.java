@@ -1,6 +1,6 @@
-package com.example.konspect.network;
+package com.example.conspect.network;
 
-import com.example.konspect.models.Conspect;
+import com.example.conspect.models.Conspect;
 
 import java.util.List;
 

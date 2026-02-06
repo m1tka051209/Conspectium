@@ -1,5 +1,6 @@
-package com.example.konspect.ui.home;
+package com.example.conspect.ui.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.konspect.adapters.ConspectAdapter;
-import com.example.konspect.databinding.FragmentHomeBinding;
+import com.example.conspect.R;
+import com.example.conspect.adapters.ConspectAdapter;
+import com.example.conspect.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 
@@ -30,7 +32,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         setupRecyclerView();
-
+        setupSwipeRefresh();
         observeViewModel();
 
         return root;
@@ -42,14 +44,36 @@ public class HomeFragment extends Fragment {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(conspect -> Toast.makeText(getContext(), "Открываем: " + conspect.getTitle(),
-                Toast.LENGTH_SHORT).show());
+        adapter.setOnItemClickListener(conspect -> Toast.makeText(getContext(), "Открываем: " + conspect.getTitle(), Toast.LENGTH_SHORT).show());
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private void setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(getContext(), "Обновление...", Toast.LENGTH_SHORT).show();
+
+            viewModel.refresh();
+
+            binding.swipeRefreshLayout.postDelayed(() -> {
+                if (binding.swipeRefreshLayout.isRefreshing()) {
+                    binding.swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 2000);
+        });
     }
 
     private void observeViewModel() {
         viewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
             binding.progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
             binding.recyclerView.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+
+
+            if (binding.swipeRefreshLayout.isRefreshing() && !isLoading) {
+                binding.swipeRefreshLayout.setRefreshing(false);
+            }
+
         });
 
         viewModel.getConspects().observe(getViewLifecycleOwner(), conspects -> {

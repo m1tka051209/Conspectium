@@ -1,7 +1,7 @@
-package com.example.konspect.models;
+package com.example.conspect.models;
 
 public class Conspect {
-    private long id;
+    private Long id;
     private String title;
     private String content;
 
@@ -9,7 +9,7 @@ public class Conspect {
 
     private String createdAt;
 
-    public Conspect(long id, String title, String content, String subject, String createdAt) {
+    public Conspect(Long id, String title, String content, String subject, String createdAt) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -32,7 +32,7 @@ public class Conspect {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

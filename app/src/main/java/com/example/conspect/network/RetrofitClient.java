@@ -1,4 +1,4 @@
-package com.example.konspect.network;
+package com.example.conspect.network;
 
 import java.util.concurrent.TimeUnit;
 

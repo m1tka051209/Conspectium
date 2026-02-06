@@ -1,4 +1,4 @@
-package com.example.konspect.adapters;
+package com.example.conspect.adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.konspect.R;
-import com.example.konspect.models.Conspect;
+import com.example.conspect.R;
+import com.example.conspect.models.Conspect;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.konspect.ui.gallery;
+package com.example.conspect.ui.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.konspect.databinding.FragmentGalleryBinding;
+import com.example.conspect.databinding.FragmentGalleryBinding;
 
 public class GalleryFragment extends Fragment {
 
