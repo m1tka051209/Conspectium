@@ -40,6 +40,14 @@ android {
 
 dependencies {
 
+    implementation("io.github.jan-tennert.supabase:supabase-kt:2.3.0")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.3.0")
+    implementation("io.github.jan-tennert.supabase:gotrue-kt:2.3.0")
+    implementation("io.ktor:ktor-client-okhttp:2.3.0")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.3.0")
+    implementation("io.github.jan-tennert.supabase:gotrue-kt:2.3.0")
+    implementation("io.ktor:ktor-client-okhttp:2.3.0")
+
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -57,6 +65,10 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.coordinatorlayout)
+    implementation(libs.activity)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

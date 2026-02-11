@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.Conspect" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
@@ -8,9 +9,12 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:windowBackground">@color/background</item>
+
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
     </style>
 
-    <!-- ДОБАВЬ ЭТИ СТИЛИ В ОБА ФАЙЛА -->
     <style name="Theme.Konspect.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.Konspect.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

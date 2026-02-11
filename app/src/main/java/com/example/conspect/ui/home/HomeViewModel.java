@@ -24,48 +24,7 @@ public class HomeViewModel extends ViewModel {
     private ApiService apiService = RetrofitClient.getApiService();
 
     public HomeViewModel() {
-//        loadConpects();
-        loadTestData();
-    }
-
-    private void loadTestData() {
-        isLoadingLiveData.setValue(true);
-
-        new android.os.Handler().postDelayed(() -> {
-            List<Conspect> testData = new ArrayList<>();
-//
-//            Conspect c1 = new Conspect();
-//            c1.setId(1L);
-//            c1.setTitle("Квадратные уравнения");
-//            c1.setContent("Формула дискриминанта: D = b² - 4ac. Корни уравнения находятся по формуле: x = (-b ± √D) / 2a");
-//            c1.setSubject("Математика");
-//            c1.setCreatedAt("2024-02-15 10:30");
-//
-//
-//            Conspect c2 = new Conspect();
-//            c2.setId(2L);
-//            c2.setTitle("Фотосинтез");
-//            c2.setContent("Процесс преобразования световой энергии в химическую энергию органических соединений");
-//            c2.setSubject("Биология");
-//            c2.setCreatedAt("2024-02-14 14:20");
-//
-//            Conspect c3 = new Conspect();
-//            c3.setId(3L);
-//            c3.setTitle("Вторая мировая война");
-//            c3.setContent("1939-1945, основные события: нападение на Польшу, Сталинградская битва, открытие второго фронта");
-//            c3.setSubject("История");
-//            c3.setCreatedAt("2024-02-13 16:45");
-//
-//            testData.add(c1);
-//            testData.add(c2);
-//            testData.add(c3);
-//
-            conspectLiveData.setValue(testData);
-            isLoadingLiveData.setValue(false);
-        }, 2000);
-
-
-//
+        loadConpects();
     }
 
     public void refresh() {
@@ -83,7 +42,7 @@ public class HomeViewModel extends ViewModel {
     public void loadConpects() {
         isLoadingLiveData.setValue(true);
 
-        apiService.getAllConspects().enqueue(new Callback<List<Conspect>>() {
+        apiService.getAllConspects().enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<List<Conspect>> call, Response<List<Conspect>> response) {
                 isLoadingLiveData.setValue(false);

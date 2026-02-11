@@ -21,7 +21,19 @@ public class Conspect {
     }
 
     public String getFormattedDate() {
-        return "Дата: " + createdAt;
+        if (createdAt == null || createdAt.isEmpty()) {
+            return "Дата не указана";
+        }
+        try {
+            String dataPart = createdAt.split("T")[0];
+            String timePart = createdAt.split("T")[1].substring(0, 5);
+
+            String[] dateParts = dataPart.split("-");
+            String formattedDate = dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
+            return "Дата: " + formattedDate + " " + timePart;
+        } catch (Exception e) {
+            return "Дата: " + createdAt;
+        }
     }
 
     public void setCreatedAt(String createdAt) {

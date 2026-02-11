@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,31 +45,34 @@ public class HomeFragment extends Fragment {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(conspect -> Toast.makeText(getContext(), "Открываем: " + conspect.getTitle(), Toast.LENGTH_SHORT).show());
+        adapter.setOnItemClickListener(conspect ->
+                Toast.makeText(getContext(),
+                        "Открываем: " + conspect.getTitle(),
+                        Toast.LENGTH_SHORT).show());
     }
 
-    @SuppressLint("ResourceAsColor")
     private void setupSwipeRefresh() {
-        binding.swipeRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        binding.swipeRefreshLayout.setColorSchemeColors(
+                ContextCompat.getColor(requireContext(), android.R.color.holo_blue_bright),
+                ContextCompat.getColor(requireContext(), android.R.color.holo_green_light),
+                ContextCompat.getColor(requireContext(), android.R.color.holo_orange_light),
+                ContextCompat.getColor(requireContext(), android.R.color.holo_red_light)
+        );
+
 
         binding.swipeRefreshLayout.setOnRefreshListener(() -> {
             Toast.makeText(getContext(), "Обновление...", Toast.LENGTH_SHORT).show();
 
             viewModel.refresh();
-
-            binding.swipeRefreshLayout.postDelayed(() -> {
-                if (binding.swipeRefreshLayout.isRefreshing()) {
-                    binding.swipeRefreshLayout.setRefreshing(false);
-                }
-            }, 2000);
         });
     }
 
     private void observeViewModel() {
         viewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
-            binding.progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
-            binding.recyclerView.setVisibility(isLoading ? View.GONE : View.VISIBLE);
-
+            if (!binding.swipeRefreshLayout.isRefreshing()) {
+                binding.progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+                binding.recyclerView.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+            }
 
             if (binding.swipeRefreshLayout.isRefreshing() && !isLoading) {
                 binding.swipeRefreshLayout.setRefreshing(false);

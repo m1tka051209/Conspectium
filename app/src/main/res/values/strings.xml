@@ -11,7 +11,11 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="homeFragment">Главная</string>
-    <string name="searchFragment">Поиск</string>
     <string name="profileFragment">Профиль</string>
     <string name="add_consp">Добавить конспект</string>
+    <string name="title">Название</string>
+    <string name="subject">Предмет</string>
+    <string name="text_of_consp">Текст конспекта</string>
+    <string name="save_consp">Сохранить конспект</string>
+    <string name="searchFragment">Поиск</string>
 </resources>

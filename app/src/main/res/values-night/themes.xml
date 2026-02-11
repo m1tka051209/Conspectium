@@ -8,10 +8,14 @@
         <item name="colorSecondaryVariant">@color/accent</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:windowBackground">@color/black</item> <!-- Или другой тёмный фон -->
+        <item name="android:windowBackground">@color/background</item>  <!-- ИЗМЕНЕНО С black -->
+
+        <!-- Добавляем цвета поверхностей -->
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
     </style>
 
-    <!-- ТАКИЕ ЖЕ СТИЛИ ДЛЯ AppBar -->
+    <!-- Стили для AppBar -->
     <style name="Theme.Konspect.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Konspect.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
